@@ -17,19 +17,62 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Selection colors giống Box Đề */
+::selection {
+    background: #ee8e97;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: #cd1627;
+    color: #fff;
+}
+
+/* Card Footer */
+.card-footer {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(205, 22, 39, 0.1);
+}
+
+.copyright {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-image: url('assets/bg.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+    position: relative;
+    color: #1f1f1f;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('assets/bg.png') center/cover no-repeat;
+    filter: blur(6px);
+    transform: scale(1.04);
+    z-index: -2;
+}
+
+/* Dark Overlay giống Box Đề */
+.dark-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: -1;
 }
 
 /* Maintenance Banner */
@@ -92,8 +135,40 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-top: auto;
     margin-bottom: auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Main Content Card */
+.main-card {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 26px;
+    padding: 60px 50px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(5px);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 950px;
+    width: calc(100% - 32px);
+    min-height: 600px;
+    animation: fadeInUp 0.8s ease-out;
+    gap: 35px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .logo {
@@ -102,7 +177,7 @@ body {
 }
 
 .logo img {
-    max-height: 80px;
+    max-height: 50px;
     width: auto;
     height: auto;
     max-width: 100%;
@@ -116,39 +191,40 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 15px;
+    background: white;
+    border-radius: 12px;
     padding: 40px 30px;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 2px 10px rgba(0, 0, 0, 0.06);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 400px;
     cursor: pointer;
     position: relative;
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid #cd1627;
 }
 
 .card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15);
+    border-color: #e61d2f;
+    background: rgba(205, 22, 39, 0.02);
 }
 
 .card:active,
 .card:focus {
-    background: rgba(192, 0, 0, 0.1);
-    border: 2px solid rgb(192, 0, 0);
+    background: rgba(205, 22, 39, 0.05);
+    border: 3px solid #cd1627;
     transform: translateY(-3px);
 }
 
 .card:active .card-title,
 .card:focus .card-title {
-    color: rgb(192, 0, 0);
+    color: #b01426;
 }
 
 .card:active .card-icon i,
 .card:focus .card-icon i {
-    color: rgb(192, 0, 0);
+    color: #b01426;
     transform: scale(1.1);
 }
 
@@ -158,23 +234,28 @@ body {
 
 .card-icon i {
     font-size: 48px;
-    color: rgb(192, 0, 0);
-    transition: transform 0.3s ease, color 0.3s ease;
+    color: #cd1627;
+    transition: transform 0.2s ease, color 0.2s ease;
+    text-shadow: none;
 }
 
 .card-title {
     font-size: 24px;
-    font-weight: bold;
-    color: rgb(192, 0, 0);
+    font-weight: 700;
+    color: #cd1627;
     margin-bottom: 15px;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
     transition: color 0.3s ease;
+    -webkit-text-stroke: none;
+    text-shadow: none;
 }
 
 .card-description {
     font-size: 16px;
-    color: #666;
-    line-height: 1.6;
+    color: #555;
+    line-height: 1.4;
+    font-weight: 500;
 }
 
 /* Enhanced Mobile Responsive Design */
@@ -207,13 +288,21 @@ body {
         justify-content: center;
     }
     
+    .main-card {
+        padding: 60px 40px 20px;
+        border-radius: 24px;
+        max-width: 580px;
+        min-height: 520px;
+        gap: 28px;
+    }
+    
     .logo {
         margin-bottom: 30px;
         text-align: center;
     }
     
     .logo img {
-        max-height: 65px;
+        max-height: 42px;
         max-width: 90%;
     }
     
@@ -230,8 +319,13 @@ body {
         margin: 0;
         border-radius: 12px;
         min-height: 180px;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
-        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+        background: white;
+        border: 2px solid #cd1627;
+    }
+    
+    .copyright {
+        font-size: 13px;
     }
     
     .card-icon i {
@@ -271,12 +365,20 @@ body {
         min-height: calc(100vh - 40px);
     }
     
+    .main-card {
+        padding: 45px 28px 18px;
+        border-radius: 22px;
+        max-width: 480px;
+        min-height: 480px;
+        gap: 26px;
+    }
+    
     .logo {
         margin-bottom: 25px;
     }
     
     .logo img {
-        max-height: 55px;
+        max-height: 38px;
         max-width: 85%;
     }
     
@@ -292,8 +394,17 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08), 0 1px 6px rgba(0, 0, 0, 0.04);
-        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.06);
+        background: white;
+        border: 2px solid #cd1627;
+    }
+    
+    .card-footer {
+        padding-top: 12px;
+    }
+    
+    .copyright {
+        font-size: 12px;
     }
     
     .card-icon {
@@ -327,8 +438,16 @@ body {
         padding-bottom: max(10px, env(safe-area-inset-bottom, 10px));
     }
     
+    .main-card {
+        padding: 38px 24px 16px;
+        border-radius: 22px;
+        max-width: 400px;
+        min-height: 450px;
+        gap: 24px;
+    }
+    
     .logo img {
-        max-height: 50px;
+        max-height: 34px;
         max-width: 80%;
     }
     
@@ -339,8 +458,17 @@ body {
     .card {
         padding: 25px 15px;
         min-height: 150px;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
-        background: rgba(255, 255, 255, 0.99);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+        background: white;
+        border: 2px solid #cd1627;
+    }
+    
+    .card-footer {
+        padding-top: 10px;
+    }
+    
+    .copyright {
+        font-size: 11px;
     }
     
     .card-icon i {
@@ -360,18 +488,21 @@ body {
 @media (hover: none) and (pointer: coarse) {
     .card:hover {
         transform: none;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12), 0 2px 10px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-color: #cd1627;
     }
     
     .card:active {
         transform: scale(0.97);
         transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        background: rgba(205, 22, 39, 0.05);
+        border-color: #b01426;
     }
     
     /* Improve tap highlight */
     .card {
-        -webkit-tap-highlight-color: rgba(192, 0, 0, 0.1);
+        -webkit-tap-highlight-color: rgba(205, 22, 39, 0.1);
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         user-select: none;
@@ -394,6 +525,14 @@ body {
         padding-right: max(20px, env(safe-area-inset-right, 20px));
     }
     
+    .main-card {
+        padding: 30px 35px;
+        max-width: 850px;
+        border-radius: 12px;
+        min-height: 380px;
+        gap: 25px;
+    }
+    
     .card-container {
         flex-direction: row;
         gap: 20px;
@@ -412,7 +551,7 @@ body {
     }
     
     .logo img {
-        max-height: 45px;
+        max-height: 30px;
         max-width: 80%;
     }
 }

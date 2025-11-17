@@ -42,6 +42,59 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* Submenu Styles */
+.submenu {
+    width: 100%;
+}
+
+.submenu .card-container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.submenu-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.back-button {
+    position: absolute;
+    left: 0;
+    background: none;
+    border: 2px solid #cd1627;
+    color: #cd1627;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back-button:hover {
+    background: #cd1627;
+    color: white;
+    transform: translateX(-2px);
+}
+
+.submenu-header h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #cd1627;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
 body {
     font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     min-height: 100vh;
@@ -153,7 +206,7 @@ body::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 950px;
+    max-width: 1200px;
     width: calc(100% - 32px);
     min-height: 600px;
     animation: fadeInUp 0.8s ease-out;
@@ -185,22 +238,43 @@ body::before {
 
 .card-container {
     display: flex;
-    gap: 40px;
+    gap: 25px;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 1200px;
+}
+
+/* Desktop layout - 3 cards per row + 1 card on second row */
+@media (min-width: 1024px) {
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        max-width: 950px;
+        justify-items: center;
+        place-content: center;
+    }
+    
+    /* Make the 4th card span the middle column of the second row */
+    .card:nth-child(4) {
+        grid-column: 2;
+    }
 }
 
 .card {
     background: white;
     border-radius: 12px;
-    padding: 40px 30px;
+    padding: 30px 20px;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15), 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    width: 400px;
+    width: 280px;
     cursor: pointer;
     position: relative;
     border: 2px solid #cd1627;
+    flex: 1;
+    min-width: 260px;
+    max-width: 320px;
 }
 
 .card:hover {
@@ -229,21 +303,21 @@ body::before {
 }
 
 .card-icon {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .card-icon i {
-    font-size: 48px;
+    font-size: 42px;
     color: #cd1627;
     transition: transform 0.2s ease, color 0.2s ease;
     text-shadow: none;
 }
 
 .card-title {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     color: #cd1627;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     letter-spacing: 0.5px;
     line-height: 1.4;
     transition: color 0.3s ease;
@@ -252,7 +326,7 @@ body::before {
 }
 
 .card-description {
-    font-size: 16px;
+    font-size: 14px;
     color: #555;
     line-height: 1.4;
     font-weight: 500;
@@ -291,9 +365,24 @@ body::before {
     .main-card {
         padding: 60px 40px 20px;
         border-radius: 24px;
-        max-width: 580px;
+        max-width: 600px;
         min-height: 520px;
         gap: 28px;
+    }
+    
+    .back-button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    .submenu-header h3 {
+        font-size: 20px;
+    }
+    
+    .submenu .card-container {
+        flex-direction: column;
+        gap: 25px;
+        max-width: 400px;
     }
     
     .logo {
@@ -310,18 +399,21 @@ body::before {
         flex-direction: column;
         gap: 25px;
         width: 100%;
-        max-width: 400px;
+        max-width: 450px;
     }
     
     .card {
         width: 100%;
-        padding: 35px 25px;
+        padding: 30px 20px;
         margin: 0;
         border-radius: 12px;
-        min-height: 180px;
+        min-height: 160px;
         box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
         background: white;
         border: 2px solid #cd1627;
+        flex: none;
+        min-width: auto;
+        max-width: none;
     }
     
     .copyright {
@@ -371,6 +463,29 @@ body::before {
         max-width: 480px;
         min-height: 480px;
         gap: 26px;
+    }
+    
+    .submenu-header {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .back-button {
+        position: static;
+        align-self: flex-start;
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    
+    .submenu-header h3 {
+        font-size: 18px;
+    }
+    
+    .submenu .card-container {
+        flex-direction: column;
+        gap: 20px;
+        max-width: 100%;
     }
     
     .logo {
@@ -444,6 +559,19 @@ body::before {
         max-width: 400px;
         min-height: 450px;
         gap: 24px;
+    }
+    
+    .back-button {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+    
+    .submenu-header h3 {
+        font-size: 16px;
+    }
+    
+    .submenu .card-container {
+        gap: 18px;
     }
     
     .logo img {
@@ -535,15 +663,16 @@ body::before {
     
     .card-container {
         flex-direction: row;
-        gap: 20px;
+        gap: 15px;
         max-width: 100%;
     }
     
     .card {
         flex: 1;
-        max-width: 300px;
-        padding: 25px 20px;
-        min-height: 140px;
+        max-width: 250px;
+        padding: 20px 15px;
+        min-height: 130px;
+        min-width: 200px;
     }
     
     .logo {

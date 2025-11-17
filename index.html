@@ -134,6 +134,49 @@
                         <h2 class="card-title">PHÒNG LUYỆN</h2>
                         <p class="card-description">Hệ thống Khảo thí AECK</p>
                     </div>
+
+                    <div class="card" onclick="window.location.href='https://data.aeck.edu.vn'">
+                        <div class="card-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h2 class="card-title">KHO ĐỀ</h2>
+                        <p class="card-description">Kho dữ liệu đề thi AECK sưu tầm MIỄN PHÍ</p>
+                    </div>
+
+                    <div class="card" onclick="showTraCuuMenu()">
+                        <div class="card-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h2 class="card-title">TRA CỨU</h2>
+                        <p class="card-description">Tra cứu Sách ID và Kết quả IRT thi thử</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tra Cuu Submenu -->
+            <div class="submenu" id="traCuuSubmenu" style="display: none;">
+                <div class="submenu-header">
+                    <button class="back-button" onclick="showMainMenu()">
+                        <i class="fas fa-arrow-left"></i> Quay lại
+                    </button>
+                    <h3>TRA CỨU</h3>
+                </div>
+                <div class="card-container">
+                    <div class="card" onclick="window.location.href='https://id.aeck.edu.vn'">
+                        <div class="card-icon">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h2 class="card-title">SÁCH ID</h2>
+                        <p class="card-description">Tra cứu thông tin sách ID</p>
+                    </div>
+
+                    <div class="card" onclick="window.location.href='https://ttkt.aeck.edu.vn'">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h2 class="card-title">KẾT QUẢ</h2>
+                        <p class="card-description">Xem kết quả thi và điểm số</p>
+                    </div>
                 </div>
             </div>
         </div>

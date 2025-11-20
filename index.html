@@ -97,11 +97,13 @@
 
 </head>
 <body>
-    <!-- Maintenance Notice Banner -->
-    <div class="maintenance-banner">
-        <div class="maintenance-content">
-            <i class="fas fa-tools"></i>
-            <span>Hệ thống đang được bảo trì nên có thể lỗi trong quá trình sử dụng. Thời gian bảo trì dự kiến hết ngày 18/11/2025. Mong các bạn thông cảm!</span>
+    <!-- Popup Notification -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-container">
+            <button class="popup-close" onclick="closePopup()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="assets/event/20.11/20_11.png" alt="Thông báo" class="popup-image">
         </div>
     </div>
 
